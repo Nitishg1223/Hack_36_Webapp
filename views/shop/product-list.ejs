@@ -1,0 +1,63 @@
+<%- include('../includes/head.ejs') %>
+    <!-- <link rel="stylesheet" href="./product.css"> -->
+    <style>
+    .product-form {
+    width: 20rem;
+    max-width: 90%;
+    margin: auto;
+}
+
+
+.product-item {
+    width: 20rem;
+    max-width: 95%;
+}
+
+.product__title {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.product__price {
+    text-align: center;
+    color: #4d4d4d;
+    margin-bottom: 0.5rem;
+}
+
+.product__description {
+    text-align: center;
+}
+    </style>
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <% if (prods.length > 0) { %>
+            <div class="grid">
+                <% for (let product of prods) { %>
+                    <article class="card product-item">
+                        <header class="card__header">
+                            <h1 class="product__title"><%= product.title %></h1>
+                        </header>
+                        <div class="card__image">
+                            <img src="<%= product.imageUrl %>" height="300" width="50"
+                                alt="<%= product.title %>">
+                        </div>
+                        <div class="card__content">
+                            <h2 class="product__price"><%= product.price %></h2>
+                            <p class="product__description"><%= product.description %></p>
+                        </div>
+                        <div class="card__actions">
+                                    <a href="/products/<%= product._id %>" class="btn">Details</a>           
+                                    <%- include('../includes/add-to-cart.ejs', {product: product}) %>
+                        </div>
+                    </article>
+                <% } %>
+            </div>
+        <% } else { %>
+            <h1>No Productssssssss Found!</h1>
+        <% } %>
+    </main>
+<%- include('../includes/end.ejs') %>
