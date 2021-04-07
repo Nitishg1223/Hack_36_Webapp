@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 
-* {
-  box-sizing: border-box;
-}
+
 
 body {
   padding: 0;
   margin: 0;
   font-family: 'Open Sans', sans-serif;
 }
-
+nav{
+  padding:30px 0;
+}
 main {
   padding: 1rem;
   margin: auto;
@@ -193,7 +193,7 @@ form {
 
 .card__actions button,
 .card__actions a {
-  margin: 0 0.25rem;
+  margin:0.25rem;
 }
 
 .btn {
