@@ -50,6 +50,7 @@
 
 
  userSchema.methods.removeFromCart = function(product_id){
+   console.log('here');
      const updatedCartItems = this.cart.items.filter(cp => {
          return cp.productId.toString() !== product_id.toString();
      });
