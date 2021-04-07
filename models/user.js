@@ -5,12 +5,14 @@
  const userSchema = new Schema({
    email: {
      type: String,
-     required: true
+    required:true,
    },
    password: {
      type: String,
-     required: true
+
    },
+   googleId:String,
+   facebookId:String,
    cart: {
      items: [
        {
@@ -59,7 +61,7 @@
 
 userSchema.methods.clearCart = function() {
       this.cart = { items: [] };
-      return this.save();    
+      return this.save();
 }
 
  module.exports = mongoose.model('User', userSchema);
