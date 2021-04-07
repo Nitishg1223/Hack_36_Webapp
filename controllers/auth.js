@@ -7,8 +7,8 @@ exports.getLogin = (req, res, next) => {
 let msg = req.flash('error');
 if(msg.length>0) msg = msg[0];
 else msg = null;
+    console.log(req.session);
 
-  console.log(req.session.isLoggedIn);
     res.render('auth/login', {
       path: '/login',
       pageTitle: 'Login',
@@ -21,7 +21,7 @@ else msg = null;
   exports.postLogin = (req,res,next) => {
       const email = req.body.email;
       const password = req.body.password;
-      
+
       User.findOne({email: email})
       .then(user => {
         if(!user){
@@ -32,6 +32,7 @@ else msg = null;
         bcrypt.compare(password,user.password)
         .then(doMatch => {
           if(doMatch){
+            console.log(req.session);
             req.session.isLoggedIn = true;
             req.session.user = user;
             return req.session.save(err => {
@@ -48,16 +49,20 @@ else msg = null;
       })
       .catch(err => console.log(err));
     };
-  
 
-  
+
+
 exports.postLogout = (req, res, next) => {
   req.session.destroy(err => {
     console.log(err);
     res.redirect('/');
   });
 };
-
+// exports.googleLogin = (req,res,next) =>{
+//
+//
+//
+// }
 
 exports.getSignup = (req,res,next) => {
  res.render('auth/signup', {
@@ -97,7 +102,7 @@ exports.postSignup = (req,res,next) => {
 };
 
 exports.getReset = (req,res,next) => {
-  
+
 let msg = req.flash('error');
 if(msg.length>0) msg = msg[0];
 else msg = null;
@@ -114,19 +119,19 @@ exports.postReset = (req,res,next) => {
 
   crypto.randomBytes(32 , (err,buffer) => {
     if(err) return res.redirect('/reset')
-    
+
     const token = buffer.toString('hex');
-    
+
     User.findOne({email: req.body.email})
      .then(user => {
        if(!user){
          req.flash('error','No user with that email id');
-         return req.redirect('/reset');
+         return res.redirect('/reset');
        }
        user.resetToken = token;
       user.resetTokenExpiration = Date.now() + 360000;
       return user.save();
-     })  
+     })
      .then(result => {
        res.redirect('/');
        transporter.sendMail({
@@ -152,7 +157,7 @@ exports.getNewPassword = (req,res,next) => {
   let msg = req.flash('error');
   if(msg.length>0) msg = msg[0];
   else msg = null;
-  
+
       res.render('auth/new-password', {
         path: '/newPassword',
         pageTitle: 'New Password',
