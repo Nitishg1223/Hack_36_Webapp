@@ -15,7 +15,7 @@
                 <img src="<%= product.imageUrl %>" height="300" width="300"
                 alt="<%= product.title %>">
             </div>
-            <h2><%= product.price %></h2>
+            <h2><i class="fas fa-rupee-sign"></i><%= product.price %></h2>
             <p><%= product.description %></p>
             <form action="/cart" method="post">
                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">

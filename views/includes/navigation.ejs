@@ -1,24 +1,24 @@
 <nav>
         <ul>
            <li>
-                <a class="<%= path === '/' ? 'active' : '' %>" href="/">Shop</a>
+                <a class="<%= path === '/' ? 'active' : '' %>" href="/"><i class="fas fa-search"></i>  Explore</a>
            </li>
            <li>
-                <a class="<%= path === '/products' ? 'active' : '' %>" href="/products">Products</a>
+                <a class="<%= path === '/products' ? 'active' : '' %>" href="/products">Paintings</a>
            </li>
             <% if(isAuthenticated) { %>
            <li>
-                <a class="<%= path === '/cart' ? 'active' : '' %>" href="/cart">Cart</a>
+                <a class="<%= path === '/cart' ? 'active' : '' %>" href="/cart"><i class="fas fa-cart-plus"></i> Cart</a>
            </li>
            <li>
                 <a class="<%= path === '/orders' ? 'active' : '' %>" href="/orders">Orders</a>
            </li>
            <li>
-                <a class="<%= path === '/add-product' ? 'active' : '' %>" href="/add-product">Add Product
+                <a class="<%= path === '/add-product' ? 'active' : '' %>" href="/add-product"><i class="fas fa-plus"></i> Add Painting
                 </a>
            </li>
            <li>
-                <a class="<%= path === '/Aproducts' ? 'active' : '' %>" href="/Aproducts">Admin Products
+                <a class="<%= path === '/Aproducts' ? 'active' : '' %>" href="/Aproducts">My Paintings
                 </a>
            </li>
           <% } %>
@@ -34,7 +34,7 @@
                <li>
                     <form action="/logout" method="post">
                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                        <button class="btn btn-light"type="submit"> <i class="fas fa-user-plus">  </i>Logout</button>
+                        <button class="btn btn-light"type="submit"> <i class="fas fa-sign-out-alt"></i> </i> Logout</button>
                     </form>
                </li>
             <% } %>

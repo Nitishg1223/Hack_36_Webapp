@@ -8,6 +8,7 @@
 }
 
 .product-item {
+    margin-bottom: 70px;
     width: 20rem;
     max-width: 95%;
 }
@@ -19,7 +20,7 @@
 
 .product__price {
     text-align: center;
-    color: #4d4d4d;
+    color: #778d14;
     margin-bottom: 0.5rem;
 }
 
@@ -45,7 +46,7 @@
                                 alt="<%= product.title %>">
                         </div>
                         <div class="card__content">
-                            <h2 class="product__price"><%= product.price %></h2>
+                            <h2 class="product__price"><i class="fas fa-rupee-sign"></i><%= product.price %></h2>
                             <p class="product__description"><%= product.description %></p>
                         </div>
                         <div class="card__actions">
@@ -59,7 +60,7 @@
                 <% } %>
             </div>
         <% } else { %>
-            <h1>No Productssssssss Found!</h1>
+            <h1>No Products Found!</h1>
         <% } %>
     </main>
 <%- include('../includes/end.ejs') %>

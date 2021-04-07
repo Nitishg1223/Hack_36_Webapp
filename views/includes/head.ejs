@@ -21,11 +21,16 @@
 
 html {
   height:100%;
-  background-image: linear-gradient(to right top, #8e44ad 0%, #3498db 100%);
+  width: 100%;
+  background-image: linear-gradient(to right top, #000000 0%, #0d584c 100%);
+  background-repeat:repeat-y;
 }
 body {
   height:100%;
-  background-image: linear-gradient(to right top, #8e44ad 0%, #3498db 100%);
+  width: 100%;
+  background-image: linear-gradient(to right top, #000000 0%, #0d584c 100%);
+  background-repeat:repeat-y;
+  background-attachment: fixed;
 }
 
 nav {
@@ -38,6 +43,7 @@ nav {
 
 nav ul {
   text-align: center;
+  width:fit-content;
   background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%);
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
 }
@@ -49,8 +55,9 @@ nav ul li {
 nav ul li a  {
   padding: 18px;
   font-family: "Open Sans";
+  font-weight: bolder;
   text-transform:uppercase;
-  color: rgba(0, 35, 122, 0.5);
+  color: rgba(1, 18, 59, 0.918);
   font-size: 18px;
   text-decoration: none;
   display: block;
@@ -59,14 +66,14 @@ nav ul li a  {
 nav ul li a:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
   background: rgba(255, 255, 255, 0.1);
-  color: rgba(0, 35, 122, 0.7);
+  color: rgba(255, 255, 255, 0.63);
 }
 
 a.active {
 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
   background: rgba(255, 255, 255, 0.1);
-  color: rgba(0, 35, 122, 0.7);
+  color: rgba(255, 255, 255, 0.63);
 
 }
 
@@ -125,12 +132,13 @@ main {
 .grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content:space-around;
   align-items: stretch;
 }
 
 .card {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  
+  box-shadow: 0 2px 8px rgba(8, 240, 112, 0.26);
 }
 
 .card__header,
@@ -212,5 +220,9 @@ body {
 
 </style>
 
+
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+
+</head>

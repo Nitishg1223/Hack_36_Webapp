@@ -41,11 +41,7 @@
                             <form action="/cart-delete-item" method="POST">
                                 <input type="hidden" value="<%= p.productId._id %>" name="productId">
                                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-<<<<<<< HEAD
-                                <button class="btn danger" type="submit">Delete</button>
-=======
-                                <button class="btn btn-secondary" type="submit"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp Delete</button>
->>>>>>> 0017de0ae3cd8bb447adef12038e8e37d85a7f3f
+                                <button class="btn btn-danger" type="submit"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp Delete</button>
                             </form>
                             <% console.log('okk') %>
                         </li>
@@ -55,7 +51,7 @@
                 <div class="centered" style="text-align:center">
                     <form action="/create-order" method="POST">
                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                        <button type="submit" class="btn btn-light"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp Order Now!</button>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp Order Now!</button>
                     </form>
                 </div>
 
