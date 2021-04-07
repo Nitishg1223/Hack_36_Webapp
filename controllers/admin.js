@@ -22,7 +22,8 @@ exports.postAddProduct = (req, res, next) => {
     price: price,
     description: description,
     imageUrl: imageUrl,
-    userId: req.user
+    userId: req.user,
+    likes: 0
   });
   product.save()               //save method coming from mongoose
   .then(result => {
@@ -40,7 +41,7 @@ exports.getEditProduct = (req,res,next) => {
   Product.findById(prodId)
   .then(product => {
 
-    if(!product) return res.redirect('/');
+    if(!product) return res.redirect('/index');
     res.render('admin/edit-product', {
         pageTitle: 'Edit Product',
         path: '/edit-product',
@@ -62,7 +63,7 @@ exports.postEditProduct = (req, res, next) => {
 
   Product.findById(prodId).then(product => {
     if(product.userId.toString() !== req.user._id.toString()){
-      return res.redirect('/');
+      return res.redirect('/index');
     }
     product.title = updatedTitle;
     product.price = updatedPrice;

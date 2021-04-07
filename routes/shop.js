@@ -23,6 +23,8 @@ router.post('cart-delete-item',isAuth, Controller.postcartDeleteProduct);
 
 router.post('/create-order',isAuth, Controller.postOrder);
 
+router.post('/like',isAuth, Controller.postLike);
+
 router.get('/orders', isAuth, Controller.getOrders);
 
 router.get('/checkout', Controller.getCheckout);

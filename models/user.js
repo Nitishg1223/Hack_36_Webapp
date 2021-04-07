@@ -24,6 +24,18 @@
          quantity: { type: Number, required: true }
        }
      ]
+   },
+
+   likedPaintings:{
+     items: [
+       {
+         productId: {
+           type: Schema.Types.ObjectId,
+           ref: 'Product',
+           required: true
+         }
+       }
+     ]
    }
  });
 
@@ -49,6 +61,37 @@
    this.cart = updatedCart;
    return this.save();
  };
+
+
+
+
+
+ userSchema.methods.saveToLiked = function(product){
+  console.log(this.likedPaintings);
+  const savedIndex = this.likedPaintings.items.findIndex(cp => {
+   return cp.productId.toString() === product._id.toString();
+ });
+ const updatedSaved = [...this.likedPaintings.items];
+
+ if (savedIndex >= 0) {
+  return;
+ } else {
+   updatedSaved.push({
+     productId: product._id
+   });
+ }
+ const updatedCart = {
+   items: updatedSaved
+ };
+ this.likedPaintings = updatedCart;
+
+ return this.save();
+}
+
+
+
+
+
 
 
  userSchema.methods.removeFromCart = function(product_id){

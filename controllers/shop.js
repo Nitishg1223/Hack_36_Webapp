@@ -1,5 +1,7 @@
  const Product = require('../models/product');
-  const Order = require('../models/orders');
+const Order = require('../models/orders');
+
+
 
  exports.getProducts = (req, res, next) => {
    Product.find()
@@ -56,7 +58,7 @@
     res.render('shop/Index', {
     prods: products,
     pageTitle: 'Shop',
-    path: '/',
+    path: '/index',
     isAuthenticated: req.session.isLoggedIn
     });
     })
@@ -79,9 +81,27 @@
  });
  };
 
+ exports.postLike = (req, res, next) => {
+   const prodId = req.body.productId;
+   const userId = req.user._id;
+   let pr;
+   Product.findById(prodId)
+   .then(product => {
+     if(product.userLiked.userId.includes(userId.toString())){
+       return;
+     }
+      product.likes = product.likes+1;
+      product.userLiked.userId.push(userId.toString());
+      product.save().then(res => {
+        req.user.saveToLiked(product);
+      }).catch(err => console.log(err));
+   })
+   .catch(err => console.log(err));
+   console.log('liked');
+   return res.redirect('/products');
+ }
+
  exports.getCart = (req,res,next) => {
-
-
    console.log(req.session);
     req.user
     .populate('cart.items.productId')

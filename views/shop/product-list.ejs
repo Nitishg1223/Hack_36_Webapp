@@ -36,6 +36,7 @@
                     <article class="card product-item"style="background-color:initial">
                         <header class="card__header">
                             <h1 class="product__title"><%= product.title %></h1>
+                            <p style="text-align: left;"><i class="fas fa-heart"></i>  <%=product.likes%></p>  
                         </header>
                         <div class="card__image">
                             <img src="<%= product.imageUrl %>" height="300" width="50"
@@ -49,6 +50,11 @@
                                     <a href="/products/<%= product._id %>" class="btn btn-dark"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp Details</a>
                                     <%- include('../includes/add-to-cart.ejs', {product: product}) %>
                         </div>
+                        <form action="/like" method="post">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <button class="btn btn-primary" type="submit">Hit Like</button>
+                            <input type="hidden" name="productId" value="<%= product._id %>">
+                        </form>
                     </article>
                 <% } %>
             </div>
