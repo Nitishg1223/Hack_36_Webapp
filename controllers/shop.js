@@ -35,10 +35,10 @@
     });
  };
 
-  exports.getIndex = (req, res, next) => {
+  exports.getEnter = (req, res, next) => {
        Product.find()
        .then(products => {
-       res.render('shop/index', {
+       res.render('shop/Enter', {
        prods: products,
        pageTitle: 'Shop',
        path: '/',
@@ -49,6 +49,21 @@
          console.log(err);
        });
    };
+
+   exports.getIndex = (req, res, next) => {
+    Product.find()
+    .then(products => {
+    res.render('shop/Index', {
+    prods: products,
+    pageTitle: 'Shop',
+    path: '/',
+    isAuthenticated: req.session.isLoggedIn
+    });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
 
 
 

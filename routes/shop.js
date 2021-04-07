@@ -7,7 +7,9 @@ const router = express.Router();
 const Controller = require('../controllers/shop');
 const isAuth = require('../middleware/is-auth');
 
-router.get('/', Controller.getIndex);
+router.get('/', Controller.getEnter);
+
+router.get('/index', Controller.getIndex);
 
 router.get('/products', Controller.getProducts);
 
