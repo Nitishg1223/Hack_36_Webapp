@@ -3,11 +3,10 @@ const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
 
 exports.getLogin = (req, res, next) => {
-
 let msg = req.flash('error');
 if(msg.length>0) msg = msg[0];
 else msg = null;
-    console.log(req.session);
+    
 
     res.render('auth/login', {
       path: '/login',
@@ -32,7 +31,6 @@ else msg = null;
         bcrypt.compare(password,user.password)
         .then(doMatch => {
           if(doMatch){
-            console.log(req.session);
             req.session.isLoggedIn = true;
             req.session.user = user;
             return req.session.save(err => {

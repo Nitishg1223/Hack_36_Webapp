@@ -76,7 +76,6 @@ const Order = require('../models/orders');
       return req.user.addToCart(product);
     })
  .then(result => {
-   console.log(result);
    res.redirect('/cart');
  });
  };
