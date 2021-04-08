@@ -49,7 +49,18 @@ const mongoose = require('mongoose');
        }
      ]
    },
-   secret:String
+   secret:String,
+   likedPaintings:{
+    items: [
+      {
+        productId: {
+          type: Schema.Types.ObjectId,
+          ref: 'Product',
+          required: true
+        }
+      }
+    ]
+  }
  });
  // google authorization starts here
  userSchema.plugin(passportLocalMongoose);
@@ -86,7 +97,8 @@ const mongoose = require('mongoose');
 
                    email: profile.emails[0].value,
                    googleId:profile.id,
-                  cart: { items : [] }
+                  cart: { items : [] },
+                  likedPaintings: { items: [] }
                    //now in the future searching on User.findOne({'facebook.id': profile.id } will match because of this next line
 
                });
@@ -144,7 +156,8 @@ profileFields: ['id', 'emails', 'name'] //This
 
                      email: profile.emails[0].value,
                      facebookId:profile.id,
-                    cart: { items : [] }
+                    cart: { items : [] },
+                    likedPaintings: { items: [] }
                      //now in the future searching on User.findOne({'facebook.id': profile.id } will match because of this next line
 
                  });

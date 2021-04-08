@@ -86,7 +86,8 @@ exports.postSignup = (req,res,next) => {
       const user = new User({
         email: email,
         password: hashedPassword,
-        cart: { items : [] }
+        cart: { items : [] },
+        likedPaintings: {items: []}
       })
       return user.save();
     })
