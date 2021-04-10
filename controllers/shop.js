@@ -1,11 +1,12 @@
 const Product = require('../models/product');
 const Order = require('../models/orders');
-
+const User= require('../models/user');
 
 
  exports.getProducts = (req, res, next) => {
    Product.find()
    .then(products => {
+
      res.render('shop/product-list', {
        prods: products,
        pageTitle: 'All Products',
@@ -39,23 +40,42 @@ const Order = require('../models/orders');
  }
 
 
-  exports.getProduct = (req, res, next) => {
-    const prodId = req.params.productId;
-    console.log(req.params);
-    console.log('e');
-    Product.findById(prodId)
-    .then(prodd => {
-         res.render('shop/product-detail', {
-         product: prodd,
-         pageTitle: prodd.title,
-         path: '/products',
-         isAuthenticated: req.session.isLoggedIn
-    });
-    })
-    .catch(err => {
-      console.log(err);
-    });
- };
+ exports.getProduct = (req, res, next) => {
+   const prodId = req.params.productId;
+   console.log(req.params);
+   console.log('e');
+   Product.findById(prodId)
+   .then(prodd => {
+        User.findById(prodd.userId).then(user => {
+          console.log(user);
+          res.render('shop/product-detail', {
+           product: prodd,
+           pageTitle: prodd.title,
+           path: '/products',
+           isAuthenticated: req.session.isLoggedIn,
+           name: user.email,
+           authorId:user._id
+        });
+
+   });
+   })
+   .catch(err => {
+     console.log(err);
+   });
+};
+exports.getAuthor = (req,res,next) =>  {
+ const authorId=req.params.authorId;
+ console.log("hello");
+ User.findById(authorId).then(user =>{
+   console.log(user.createdPaintings);
+     res.render('shop/author-detail', {
+       array: user.createdPaintings,
+       pageTitle:"creator",
+       path: '/creator',
+       isAuthenticated: req.session.isLoggedIn
+     })
+ });
+}
 
   exports.getEnter = (req, res, next) => {
     Product.find()
@@ -156,6 +176,7 @@ const Order = require('../models/orders');
  };
 
  exports.postOrder = (req, res, next) => {
+console.log(req.user);
   req.user
     .populate('cart.items.productId')
     .execPopulate()
@@ -180,6 +201,14 @@ const Order = require('../models/orders');
     })
     .catch(err => console.log(err));
 };
+exports.getCheck = (req,res,next) =>{
+
+  res.render('shop/checkout-form',{
+
+  });
+
+
+}
 
 
 exports.getOrders = (req,res,next) => {

@@ -6,7 +6,7 @@ exports.getLogin = (req, res, next) => {
 let msg = req.flash('error');
 if(msg.length>0) msg = msg[0];
 else msg = null;
-    
+
 
     res.render('auth/login', {
       path: '/login',
@@ -87,7 +87,8 @@ exports.postSignup = (req,res,next) => {
         email: email,
         password: hashedPassword,
         cart: { items : [] },
-        likedPaintings: {items: []}
+        likedPaintings: {items: []},
+          createdPaintings:{items: []}
       })
       return user.save();
     })

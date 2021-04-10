@@ -35,7 +35,14 @@
          }
        }
      ]
-   }
+   },
+   createdPaintings: [
+    {
+      title: {type: String},
+      price: {type: Number},
+      imageUrl: {type: String}
+    }
+  ]
  });
 
  userSchema.methods.addToCart = function(product) {
@@ -85,7 +92,17 @@
 
  return this.save();
 }
-
+userSchema.methods.addPainting = function(product) {
+   let pp =  {
+     title: product.title,
+     price: product.price,
+     imageUrl: product.imageUrl
+   }
+  const mine = [...this.createdPaintings];
+  mine.push(pp);
+  this.createdPaintings = mine;
+  return this.save();
+}
 
 
 

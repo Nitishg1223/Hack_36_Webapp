@@ -27,6 +27,7 @@ exports.postAddProduct = (req, res, next) => {
   });
   product.save()               //save method coming from mongoose
   .then(result => {
+    req.user.addPainting(product);
     console.log('Created Product');
      res.redirect('/Aproducts');
   })
@@ -102,4 +103,3 @@ exports.postDeleteProduct = (req, res, next) => {
     })
     .catch(err => console.log(err));
 };
-
