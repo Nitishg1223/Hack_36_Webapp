@@ -31,39 +31,38 @@
 
     <main>
 
-        <form action="/trending">
-            <button class ="btn btn-primary" type="submit">Trending</button>
-            </form>
-        <% if (prods.length > 0) { %>
-            <div class="grid">
-                <% for (let product of prods) { %>
-                    <article class="card product-item"style="background-color:initial">
-                        <header class="card__header">
-                            <h1 class="product__title"><%= product.title %></h1>
-                            <p style="text-align: left;"><i class="fas fa-heart"></i>  <%=product.likes%></p>  
-                        </header>
-                        <div class="card__image">
-                            <img src="<%= product.imageUrl %>" height="300" width="50"
-                                alt="<%= product.title %>">
-                        </div>
-                        <div class="card__content">
-                            <h2 class="product__price"><i class="fas fa-rupee-sign"></i><%= product.price %></h2>
-                            <p class="product__description"><%= product.description %></p>
-                        </div>
-                        <div class="card__actions">
-                                    <a href="/products/<%= product._id %>" class="btn btn-dark"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp Details</a>
-                                    <%- include('../includes/add-to-cart.ejs', {product: product}) %>
-                        </div>
-                        <form action="/like" method="post">
-                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                            <button class="btn btn-primary" type="submit">Hit Like</button>
-                            <input type="hidden" name="productId" value="<%= product._id %>">
-                        </form>
-                    </article>
-                <% } %>
-            </div>
-        <% } else { %>
-            <h1>No Productssssssss Found!</h1>
-        <% } %>
+
+            <% if (prods.length > 0) { %>
+                <div class="grid">
+                    <% for (let product of prods) { %>
+                        <article class="card product-item"style="background-color:initial">
+                            <header class="card__header">
+                                <h1 class="product__title" style="color:#cdc733;font-size:xx-large"><b><%= product.title %></b></h1>
+
+                            </header>
+                            <div class="card__image">
+                                <img src="<%= product.imageUrl %>" height="300" width="50"
+                                    alt="<%= product.title %>">
+                            </div>
+                            <div class="card__content">
+                                <h2 class="product__price" style="color:#cdc733"><i class="fas fa-rupee-sign"></i><%= product.price %></h2>
+                      
+                            </div>
+                            <div class="card__actions" style="padding-bottom:6px">
+                                        <a href="/products/<%= product._id %>" class="btn btn-light"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp Details</a>
+                                        <%- include('../includes/add-to-cart.ejs', {product: product}) %>
+                            </div>
+                            <form action="/like" style="text-align:center;margin-bottom:20px" method="post">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <button class="btn btn-danger" style="height:42px" type="submit"><p style="text-align: center;"><i class="fas fa-heart"></i>  <%=product.likes%></p></button>
+
+                                <input type="hidden" name="productId" value="<%= product._id %>">
+                            </form>
+                        </article>
+                    <% } %>
+                </div>
+            <% } else { %>
+                <h1>No Productssssssss Found!</h1>
+            <% } %>
     </main>
 <%- include('../includes/end.ejs') %>

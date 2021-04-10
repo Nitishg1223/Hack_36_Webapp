@@ -19,61 +19,88 @@
 
 
 
+
 html {
   height:100%;
   width: 100%;
-  background-image: linear-gradient(to right top, #000000 0%, #0d584c 100%);
-  background-repeat:repeat-y;
+  /* background-image: linear-gradient(to right top, #000000 0%, #0d584c 100%); */
+  /* background-repeat:repeat-y; */
 }
 body {
   height:100%;
   width: 100%;
-  background-image: linear-gradient(to right top, #000000 0%, #0d584c 100%);
-  background-repeat:repeat-y;
+  background-image:url("https://images.wallpapersden.com/image/download/black-wall-pattern_a2ptaG2UmZqaraWkpJRobWllrWdma2U.jpg");
+  background-repeat:no-repeat;
+  background-size: cover;
 }
 
-nav {
-  max-width: 960px;
-  mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #ffffff 25%, #ffffff 75%, rgba(255, 255, 255, 0) 100%);
-  margin: 0 auto;
-  padding: 30px 0;
 
+.addbg{
+position: relative;
+background-color: #262626;
+}
+.navbar {
+    transition: all 0.4s;
 }
 
-nav ul {
-  text-align: center;
-  width:max-content;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%);
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+
+.navbar .nav-link {
+    color: #fff;
+}
+.navbar .nav-link.act {
+    color: #cdc733;
+}
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+    color: #cc7351;
+    text-decoration: none;
 }
 
-nav ul li {
-  display: inline-block;
+
+.navbar .navbar-brand {
+    color: #cdc733;
 }
 
-nav ul li a  {
-  padding: 18px;
-  font-family: "Open Sans";
-  font-weight: bolder;
-  text-transform:uppercase;
-  color: rgba(1, 18, 59, 0.918);
-  font-size: 18px;
-  text-decoration: none;
-  display: block;
+
+/* Change navbar styling on scroll */
+.navbar.active {
+    background: #fff;
+    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-nav ul li a:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.63);
+.navbar.active .nav-link {
+    color: #555;
 }
 
-a.active {
 
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.63);
+.navbar.active .nav-link:hover,
+.navbar.active .nav-link:focus {
+    color: black;
+    text-decoration: none;
+}
 
+.navbar.active .navbar-brand {
+    color: #555;
+}
+.navbar.active .navbar-brand {
+    color: #f39189;
+}
+
+
+.navbar.active .act{
+  color:#f39189;
+}
+
+
+/* Change navbar styling on small viewports */
+@media (max-width: 991.98px) {
+    .navbar {
+        background: #fff;
+    }
+
+    .navbar .navbar-brand, .navbar .nav-link {
+        color: #555;
+    }
 }
 
 
@@ -136,7 +163,7 @@ main {
 }
 
 .card {
-  
+
   box-shadow: 0 2px 8px rgba(8, 240, 112, 0.26);
 }
 
@@ -222,6 +249,10 @@ body {
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
 </head>

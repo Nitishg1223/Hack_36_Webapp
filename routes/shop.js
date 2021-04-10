@@ -21,7 +21,7 @@ router.post('/cart',isAuth, Controller.postCart);
 
 router.get('/trending', isAuth, Controller.getTrending);
 
-router.post('cart-delete-item',isAuth, Controller.postcartDeleteProduct);
+router.post('/cart-delete-item',isAuth, Controller.postcartDeleteProduct);
 
 router.post('/create-order',isAuth, Controller.postOrder);
 
@@ -33,4 +33,3 @@ router.get('/checkout', Controller.getCheckout);
 
 
 module.exports = router;
-
