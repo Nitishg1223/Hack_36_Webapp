@@ -1,11 +1,11 @@
 <nav>
         <ul>
            <li>
-                <a class="<%= path === '/index' ? 'active' : '' %>" href="/index"><i class="fas fa-search"></i>  Explore</a>
+                <a class="<%= path === '/' ? 'active' : '' %>" href="/">  Home</a>
            </li>
            <li>
-                <a class="<%= path === '/products' ? 'active' : '' %>" href="/products">Paintings</a>
-           </li>
+               <a class="<%= path === '/products' ? 'active' : '' %>" href="/products"><i class="fas fa-search"></i>  Explore</a>
+          </li>
             <% if(isAuthenticated) { %>
            <li>
                 <a class="<%= path === '/cart' ? 'active' : '' %>" href="/cart"><i class="fas fa-cart-plus"></i> Cart</a>

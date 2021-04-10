@@ -1,4 +1,4 @@
- const Product = require('../models/product');
+const Product = require('../models/product');
 const Order = require('../models/orders');
 
 
@@ -17,6 +17,26 @@ const Order = require('../models/orders');
      console.log(err);
    });
  };
+
+ exports.getTrending = (req, res, next) => {
+    Product.find()
+    .then(products => {
+      let pds = products.sort((a,b) => {
+        if(a.likes < b.likes) return 1;
+        else if(a.likes > b.likes) return -1;
+        else return 0;
+      });
+      if(pds.length > 3)
+      pds = pds.slice(0, 3);
+      console.log(pds);
+      res.render('shop/enter', {
+        prods: pds,
+        pageTitle: 'On Trend',
+        path: '/trending',
+        isAuthenticated: req.session.isLoggedIn
+      });
+    })
+ }
 
 
   exports.getProduct = (req, res, next) => {
@@ -38,18 +58,23 @@ const Order = require('../models/orders');
  };
 
   exports.getEnter = (req, res, next) => {
-       Product.find()
-       .then(products => {
-       res.render('shop/Enter', {
-       prods: products,
-       pageTitle: 'Shop',
-       path: '/',
-       isAuthenticated: req.session.isLoggedIn
-       });
-       })
-       .catch(err => {
-         console.log(err);
-       });
+    Product.find()
+    .then(products => {
+      let pds = products.sort((a,b) => {
+        if(a.likes < b.likes) return 1;
+        else if(a.likes > b.likes) return -1;
+        else return 0;
+      });
+      if(pds.length > 3)
+      pds = pds.slice(0, 3);
+      //console.log(pds);
+      res.render('shop/enter', {
+        prods: pds,
+        pageTitle: 'On Trend',
+        path: '/trending',
+        isAuthenticated: req.session.isLoggedIn
+      });
+    })
    };
 
    exports.getIndex = (req, res, next) => {
@@ -58,7 +83,7 @@ const Order = require('../models/orders');
     res.render('shop/Index', {
     prods: products,
     pageTitle: 'Shop',
-    path: '/index',
+    path: '/products',
     isAuthenticated: req.session.isLoggedIn
     });
     })

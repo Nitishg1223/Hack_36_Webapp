@@ -34,6 +34,9 @@
     <%- include('../includes/navigation.ejs') %>
 
     <main>
+        <form action="/trending">
+        <button class ="btn btn-primary" type="submit">Trending</button>
+        </form>
         <% if (prods.length > 0) { %>
             <div class="grid">
                 <% for (let product of prods) { %>

@@ -41,7 +41,7 @@ exports.getEditProduct = (req,res,next) => {
   Product.findById(prodId)
   .then(product => {
 
-    if(!product) return res.redirect('/index');
+    if(!product) return res.redirect('/products');
     res.render('admin/edit-product', {
         pageTitle: 'Edit Product',
         path: '/edit-product',
@@ -63,7 +63,7 @@ exports.postEditProduct = (req, res, next) => {
 
   Product.findById(prodId).then(product => {
     if(product.userId.toString() !== req.user._id.toString()){
-      return res.redirect('/index');
+      return res.redirect('/products');
     }
     product.title = updatedTitle;
     product.price = updatedPrice;

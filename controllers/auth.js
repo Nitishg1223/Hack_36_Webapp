@@ -35,7 +35,7 @@ else msg = null;
             req.session.user = user;
             return req.session.save(err => {
               console.log(err);
-              res.redirect('/index');
+              res.redirect('/products');
             })
           }
           res.redirect('/login');
@@ -53,7 +53,7 @@ else msg = null;
 exports.postLogout = (req, res, next) => {
   req.session.destroy(err => {
     console.log(err);
-    res.redirect('/index');
+    res.redirect('/products');
   });
 };
 // exports.googleLogin = (req,res,next) =>{
@@ -132,7 +132,7 @@ exports.postReset = (req,res,next) => {
       return user.save();
      })
      .then(result => {
-       res.redirect('/index');
+       res.redirect('/products');
        transporter.sendMail({
          to: 'harshpachauri3001@gmail.com',
          from: 'nodeshopqwerty@gmail.com',

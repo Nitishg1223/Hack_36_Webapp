@@ -9,7 +9,7 @@ const isAuth = require('../middleware/is-auth');
 
 router.get('/', Controller.getEnter);
 
-router.get('/index', Controller.getIndex);
+//router.get('/index', Controller.getIndex);
 
 router.get('/products', Controller.getProducts);
 
@@ -18,6 +18,8 @@ router.get('/products/:productId', Controller.getProduct);
 router.get('/cart',isAuth, Controller.getCart);
 
 router.post('/cart',isAuth, Controller.postCart);
+
+router.get('/trending', isAuth, Controller.getTrending);
 
 router.post('cart-delete-item',isAuth, Controller.postcartDeleteProduct);
 

@@ -1,39 +1,237 @@
-<%- include('../includes/head.ejs') %>
-    <!-- <link rel="stylesheet" href="./product.css"> -->
-    <style>
-    .product-form {
-    width: 20rem;
-    max-width: 90%;
-    margin: auto;
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>ArtCity</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <!-- Fontawesome -->
+  <script src="https://kit.fontawesome.com/48974176e8.js" crossorigin="anonymous"></script>
+
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
+  <!-- Css stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+
+  <style>
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  background-color: black;
 }
 
-.product-item {
-    margin-bottom: 70px;
-    width: 20rem;
-    max-width: 95%;
+/* Sections */
+/* .top-section{
+  background-image: ;
+} */
+
+
+/* navigation bar */
+.navbar {
+  padding: 4.5rem 0 ;
+  padding-right: 4.5rem;
 }
 
-.product__title {
-    font-size: 1.2rem;
+.navbar-brand {
+  font-family: "Ubuntu";
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-left: 4.5rem;
+}
+
+.nav-item {
+  padding: 0 18px;
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  font-family: "Montserrat"
+}
+
+/* containers */
+
+.container-fluid{
+  padding: 7% 15%;
+}
+
+/* Headings */
+
+.main-title{
+  font-weight: 900;
+  font-size: 3.5rem;
+  line-height: 1.5;
+  color: white;
+  text-align: left;
+}
+
+
+/* images */
+
+
+  .container {
+    position: relative;
+    width: 30%;
+    color: white;
+    padding-bottom: 100px;
+  }
+
+  .img-trending {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    /* height: auto; */
+    transition: .5s ease;
+    backface-visibility: hidden;
+    margin-right: auto;
+  }
+
+  .img-trending-txt {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
     text-align: center;
-}
+    color: rgb(255, 255, 255);
+  }
 
-.product__price {
-    text-align: center;
-    color: #778d14;
-    margin-bottom: 0.5rem;
-}
+  #one {
+      width: 350px;
+      height: 350px;
+  }
 
-.product__description {
-    text-align: center;
-}
-    </style>
+  .container:hover .img-trending {
+    opacity: 0.3;
+  }
+
+  .container:hover .img-trending-txt {
+    color: white;
+    opacity: 1;
+  }
+
+  .text {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    padding: 16px 32px;
+  }
+
+
+
+  </style>
+
+
 </head>
 
-<body>
-   
 
-    <main>
-        <a href = "/index">Welcome to Art Gallery</a>
-    </main>
-<%- include('../includes/end.ejs') %>
+
+
+
+
+<body>
+
+    <section class="section-top">
+  
+  
+      <!-- Nav Bar -->
+      <nav class="navbar navbar-expand-lg navbar-dark ">
+        <a class="navbar-brand" href="">ArtCity </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="">gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">sign-in</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">about-us</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+  
+  
+  
+      <!-- Title -->
+      <div class="container-fluid">
+        <div class="main-title col-lg-6">
+          <h1 class="big-heading">A one-stop shop to Create, Sell and Showcase your Artwork aiming to remove the barrier of the current pandemic.</h1>
+          <form action="/products">
+          <button type="submit" class="btn btn-lg btn-dark download-button"><i class="fas fa-paint-brush"></i> Explore</button>
+        </form>
+        </div>
+      </div>
+  
+    </section>
+  
+    <!-- Trending section -->
+  
+  
+    <section class="section-trending">
+        <div class ="row">
+        <div class="container">
+          <img class="img-trending" src="<%=prods[0].imageUrl%>" alt="">
+          <div class="col img-trending-txt">
+            <h1 class="img-title"><%= prods[0].title%>
+              <a href="/products/<%= prods[0]._id %>"><i class="fas fa-external-link-alt"></i></a>
+            </h1>
+            <h2 class="img-likes"> <%=prods[0].likes%> <i class="fas fa-heart"></i></h2>
+          </div>
+        </div>
+       </div>
+    
+    
+        <div class="row">
+    
+    
+          <div class="col-lg-5 container">
+            <div class="img-trending">
+              <img src="<%=prods[1].imageUrl%>" alt="" id="one">
+              <div class="col img-trending-txt">
+                <h1 class="img-title"><%=prods[1].title%>
+                  <a href="/products/<%= prods[1]._id %>"><i class="fas fa-fighter-jet"></i></a>
+                </h1>
+                <h2 class="img-likes"><%=prods[1].likes%> <i class="fas fa-heart"></i></h2>
+              </div>
+            </div>
+          </div>
+    
+          <div class="col-lg-5 container">
+            <div class="img-trending">
+              <img src="<%=prods[2].imageUrl%>" alt="" id="one">
+              <div class="col img-trending-txt">
+                <h1 class="img-title"><%=prods[2].title%>
+                  <a href="/products/<%= prods[2]._id %>"><i class="fas fa-fighter-jet"></i></a>
+                </h1>
+                <h2 class="img-likes"><%=prods[2].likes%> <i class="fas fa-heart"></i></h2>
+              </div>
+            </div>
+          </div> 
+    
+    
+        </div>
+        </div>
+    
+    
+        </div>
+      </section>
+    
+  </body>
+  
+  </html>
